@@ -1,0 +1,32 @@
+
+Mongodb backup and restore | How to take backup and restore mongoDB database Linux 18.04
+
+Prerequisites   
+    - Ubuntu 18.04 with SSH access.
+    - Mongodb pre-install in Ubuntu 18.04. 
+
+NOTE: I'm not responsible for anytype of data losses. Try backup at secure place before restore database.  
+
+You can find article here how to install MongoDB to Linux Ubuntu 18.04.
+
+Now we are going to create folder for backup. 
+
+
+sudo mkdir /var/www/html/mongodb/backup
+
+
+Now take backup of exiting mongoDB database. 
+
+
+sudo mongodump --db [databasename] --out /var/www/html/mongodb/backup/`date +"%m-%d-%y"`
+
+
+at /var/www/html/backup a folder created with current date.
+
+Now restore Mongodb database.
+
+remember one thing if you are going to upload/store with same database name then its replace and upload newone. ( old one will be dropped. )
+
+
+sudo mongorestore --db [databasename] --drop /var/www/html/mongodb/backup/03-16-20/databasename
+
